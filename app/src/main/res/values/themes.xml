@@ -1,0 +1,12 @@
+<resources>
+    <style name="Theme.S3" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">#FF4FC3F7</item>
+        <item name="colorOnPrimary">#FF002233</item>
+        <item name="colorSecondary">#FF80CBC4</item>
+        <item name="android:colorBackground">#FF101418</item>
+        <item name="colorSurface">#FF101418</item>
+        <item name="colorSurfaceContainer">#FF1C2228</item>
+        <item name="android:statusBarColor">#FF101418</item>
+        <item name="android:navigationBarColor">#FF101418</item>
+    </style>
+</resources>
