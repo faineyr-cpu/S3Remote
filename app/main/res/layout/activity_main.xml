@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:background="?android:attr/colorBackground">
+
+    <!-- ===== Dabar groja ===== -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_margin="10dp" app:cardCornerRadius="18dp"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer" app:strokeWidth="0dp">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:padding="14dp">
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical">
+                <ImageView android:id="@+id/dot" android:layout_width="10dp" android:layout_height="10dp"
+                    android:src="@drawable/dot" />
+                <TextView android:id="@+id/status" android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:layout_marginStart="8dp"
+                    android:text="Jungiamasi…" android:textSize="13sp" android:maxLines="1"
+                    android:ellipsize="end" android:textColor="?android:attr/textColorSecondary" />
+                <ImageButton android:id="@+id/btnSettings" android:layout_width="40dp"
+                    android:layout_height="40dp" android:src="@drawable/ic_more"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Nustatymai" />
+            </LinearLayout>
+
+            <TextView android:id="@+id/nowTitle" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="6dp"
+                android:text="Niekas negroja" android:textSize="20sp" android:textStyle="bold"
+                android:maxLines="2" android:ellipsize="end" android:textColor="?android:attr/textColorPrimary" />
+
+            <com.google.android.material.slider.Slider android:id="@+id/seek"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:valueFrom="0" android:valueTo="1" android:stepSize="1"
+                app:labelBehavior="floating" />
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:layout_marginTop="-8dp"
+                android:paddingHorizontal="14dp">
+                <TextView android:id="@+id/posText" android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content" android:text="0:00" android:textSize="12sp" />
+                <TextView android:id="@+id/durText" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="0:00" android:textSize="12sp" />
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal" android:gravity="center_vertical"
+                android:layout_marginTop="4dp">
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnStop"
+                    style="@style/Widget.Material3.Button.TonalButton.Icon"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="Stop" app:icon="@drawable/ic_stop" />
+                <com.google.android.material.button.MaterialButton android:id="@+id/btnNext"
+                    style="@style/Widget.Material3.Button.Icon"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp" android:text="Kita" app:icon="@drawable/ic_next" />
+                <ImageView android:layout_width="22dp" android:layout_height="22dp"
+                    android:layout_marginStart="10dp" android:src="@drawable/ic_volume" />
+                <com.google.android.material.slider.Slider android:id="@+id/vol"
+                    android:layout_width="0dp" android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:valueFrom="0" android:valueTo="21" android:stepSize="1" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ===== Paieška ===== -->
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:hint="Paieška arba YouTube nuoroda"
+        app:startIconDrawable="@drawable/ic_search"
+        app:endIconMode="clear_text" app:boxCornerRadiusTopStart="14dp"
+        app:boxCornerRadiusTopEnd="14dp" app:boxCornerRadiusBottomStart="14dp"
+        app:boxCornerRadiusBottomEnd="14dp">
+        <com.google.android.material.textfield.TextInputEditText android:id="@+id/query"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:inputType="text" android:imeOptions="actionSearch" android:singleLine="true" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.tabs.TabLayout android:id="@+id/tabs"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="6dp" android:background="@android:color/transparent" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator android:id="@+id/busy"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:indeterminate="true" android:visibility="invisible" />
+
+    <!-- Veiksmų juosta virš sąrašo (keičiasi pagal skirtuką) -->
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingHorizontal="14dp">
+        <TextView android:id="@+id/listInfo" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:textSize="13sp"
+            android:textColor="?android:attr/textColorSecondary" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btnListAction"
+            style="@style/Widget.Material3.Button.TextButton.Icon"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView android:id="@+id/list"
+        android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:scrollbars="vertical" android:fadeScrollbars="false"
+        android:scrollbarStyle="outsideOverlay" android:clipToPadding="false"
+        android:paddingBottom="8dp" />
+</LinearLayout>
